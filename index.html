@@ -626,49 +626,49 @@ padding: 0 25px;
             </div>
         </div>
     </footer>
-<script>
-        // Простая функция для добавления товара в корзину
-        document.querySelectorAll('.btn').forEach(button => {
-            if (button.textContent === 'В корзину') {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Товар добавлен в корзину!');
-                });
-            }
-        });
-        
-        // Обработка формы подписки
-        const newsletterForm = document.querySelector('.newsletter-form');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
+    <script>
+    // Простая функция для добавления товара в корзину
+    document.querySelectorAll('.btn').forEach(button => {
+        if (button.textContent === 'В корзину') {
+            button.addEventListener('click', function(e) {
                 e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                alert(Спасибо за подписку! На адрес ${email} будут приходить наши новости.);
-                this.reset();
+                alert('Товар добавлен в корзину!');
             });
         }
-    </script>
-    <script>
-// Плавная прокрутка для всех якорных ссылок
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        // Для ссылок с # только (не внешних ссылок)
-        if (this.getAttribute('href') !== '#') {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                // Плавная прокрутка к элементу
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        }
     });
-});
+    
+    // Обработка формы подписки
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Спасибо за подписку! На адрес ${email} будут приходить наши новости.`);
+            this.reset();
+        });
+    }
+
+    // Плавная прокрутка для всех якорных ссылок
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            // Для ссылок с # только (не внешних ссылок)
+            const href = this.getAttribute('href');
+            if (href !== '#' && href.startsWith('#')) {
+                e.preventDefault();
+                
+                const targetId = href;
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Плавная прокрутка к элементу
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
 </script>
 </body>
 </html>
