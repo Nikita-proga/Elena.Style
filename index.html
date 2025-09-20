@@ -648,5 +648,27 @@ padding: 0 25px;
             });
         }
     </script>
+    <script>
+// Плавная прокрутка для всех якорных ссылок
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        // Для ссылок с # только (не внешних ссылок)
+        if (this.getAttribute('href') !== '#') {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Плавная прокрутка к элементу
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>
